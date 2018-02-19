@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import gql from "graphql-tag";
 import { graphql } from "react-apollo";
+
 import Header from "./components/Header.js";
 import Observer from "@researchgate/react-intersection-observer";
 
@@ -34,7 +35,13 @@ class App extends Component {
           rootMargin="0% 0% -25%"
           onlyOnce
         >
-          <img className={this.state.class} data-src={imageUrl} alt={title} />
+          <img
+            onClick={() => this.props.history.push(`/posts/${_id}`)}
+            className={this.state.class}
+            data-src={imageUrl}
+            src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+            alt={title}
+          />
         </Observer>
       );
     });

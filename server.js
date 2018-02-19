@@ -9,12 +9,14 @@ import { makeExecutableSchema } from "graphql-tools";
 import typeDefs from "./schema";
 import resolvers from "./resolvers";
 
+import { keys } from "./config/keys";
+
 const schema = makeExecutableSchema({
   typeDefs,
   resolvers
 });
 
-mongoose.connect("mongodb://localhost/test");
+mongoose.connect(keys.MONGO_URI);
 mongoose.connection
   .once("open", () => console.log("Connected to Mongo"))
   .on("error", error => console.error(`Error connecting to Mongo ${error}`));
