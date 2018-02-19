@@ -4,6 +4,7 @@ import { graphql } from "react-apollo";
 import { Link } from "react-router-dom";
 
 import CommentForm from "./CommentForm";
+import CommentList from "./CommentList";
 
 class Post extends React.Component {
   render() {
@@ -24,7 +25,8 @@ class Post extends React.Component {
         <Link to="/">Home</Link>
         <h1 className="post-title">{postById.title}</h1>
         <p className="post-content">{postById.content}</p>
-        <CommentForm />
+        <CommentForm id={this.props.match.params.id} />
+        <CommentList comments={postById.comments} />
       </main>
     );
   }
@@ -37,6 +39,7 @@ const query = gql`
       title
       imageUrl
       content
+      comments
     }
   }
 `;

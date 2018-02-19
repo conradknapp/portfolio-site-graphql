@@ -22,16 +22,18 @@ header {
   opacity: 0.8;
   animation: fade-color1 5s ease-in-out infinite alternate;
 }
+
 .fa-codepen {
   opacity: 0.8;
   animation: fade-color2 5s ease-in-out infinite alternate;
 }
+
 .fa-dribbble {
   opacity: 0.8;
   animation: fade-color3 5s ease-in-out infinite alternate;
 }
 
-.fa-dribbble:hover {
+i[class^="fa"]:hover {
   animation-play-state: paused;
   opacity: 1;
 }
@@ -115,7 +117,8 @@ img {
     "image"
     "title"
     "content"
-    "form";
+    "form"
+    "list";
 }
 
 .post-image {
@@ -138,6 +141,14 @@ img {
   flex-direction: column;
   align-items: center;
   grid-area: form;
+}
+
+.comment-list {
+  grid-area: list;
+}
+
+.comment-list li {
+  margin: 1em;
 }
 
 input {

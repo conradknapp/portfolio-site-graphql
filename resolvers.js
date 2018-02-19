@@ -16,6 +16,18 @@ export default {
     },
     clearAllPosts: async (parentValue, args, { Post }) => {
       return await Post.collection.remove({});
+    },
+    likePost: async (parentValue, args, { Post }) => {
+      return await Post.findById(args).then(post => {
+        ++post.likes;
+        return post.save();
+      });
+    },
+    addComment: async (parentValue, { _id, content }, { Post }) => {
+      return await Post.findById(_id).then(post => {
+        post.comments.unshift(content);
+        return post.save();
+      });
     }
   }
 };

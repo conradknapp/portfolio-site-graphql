@@ -24,7 +24,12 @@ mongoose.connection
 const Post = mongoose.model("Post", {
   title: String,
   content: String,
-  imageUrl: String
+  imageUrl: String,
+  likes: {
+    type: Number,
+    default: 0
+  },
+  comments: [String]
 });
 
 const app = express();
