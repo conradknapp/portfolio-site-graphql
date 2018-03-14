@@ -151,11 +151,93 @@ img {
   margin: 1em;
 }
 
-input {
+.comment-form input {
   background: #000;
+  display: inline-block;
   border: none;
   outline: none;
   color: greenyellow;
   border-bottom: 0.5px dotted rgb(206, 206, 207);
   font-size: 2em;
+  transition: all 0.3s ease-in-out;
+  width: 25vw;
+}
+
+.comment-form input:focus {
+  width: 35vw;
+  border-bottom-color: greenyellow;  
+}
+
+/* LikeButton.js */
+
+.Button__Like {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 700;
+  background: #fff;
+  width: 4rem;
+  height: 4rem;
+  position: fixed;
+  right: 2rem;
+  bottom: 2rem;
+  border-radius: 50%;
+  user-select: none;
+  box-shadow: 0 0.4rem 0.8rem -0.1rem rgba(0,32,128,.15);
+  transition: all.2s ease-out;
+  visibility: visible;
+  opacity: 1;
+  z-index: 1;
+  border: 1px solid rgba(0,32,128,.1);
+  outline: 0;
+  color: black;
+}
+
+.Button__Like:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0.8rem 1.6rem -0.2rem rgba(0,32,128,.15);
+  color: #075599;
+}
+
+.Button__Like:focus {
+  box-shadow: 0 2rem 4rem -0.4rem rgba(0,32,128,.15), 0 0 6px 6px #075599;
+  outline-style: none;
+  color: rgb(8, 118, 244);
+}
+
+.Button__Like:active {
+  box-shadow: 0 1rem 2rem -0.4rem rgba(0,32,128,.15), 0 0 6px 6px rgb(72, 72, 172);
+  color: rgb(72, 72, 172);
+  transform: scale(0.99);
+  color: transparent;
+}
+
+.like-count {
+  position: absolute;
+  font-size: 1.5rem;
+  width: 100%;
+  text-align: center;
+  color: hotpink;
+  opacity: 0;
+  transition: opacity .1s ease-in;
+}
+
+.like-count-show {
+  position: absolute;
+  font-size: 1.5rem;
+  width: 100%;
+  text-align: center;
+  color: hotpink;
+  opacity: 0;
+  animation: showAndHide 1s ease-in;
+}
+
+@keyframes showAndHide {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }

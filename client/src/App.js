@@ -8,16 +8,9 @@ import Observer from "@researchgate/react-intersection-observer";
 import "./App.css";
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      class: ""
-    };
-
-    this.renderPosts = this.renderPosts.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-  }
+  state = {
+    class: ""
+  };
 
   handleChange = event => {
     if (event.isIntersecting) {
@@ -26,7 +19,7 @@ class App extends Component {
     }
   };
 
-  renderPosts() {
+  renderPosts = () => {
     return this.props.data.getAllPosts.map(({ _id, title, imageUrl }) => {
       return (
         <Observer
@@ -45,7 +38,7 @@ class App extends Component {
         </Observer>
       );
     });
-  }
+  };
 
   render() {
     if (this.props.data.loading) {

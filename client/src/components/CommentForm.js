@@ -2,16 +2,14 @@ import React, { Component } from "react";
 import gql from "graphql-tag";
 import { graphql } from "react-apollo";
 
+import LikeButton from "./LikeButton";
+
 class CommentForm extends Component {
-  constructor(props) {
-    super(props);
+  state = {
+    content: ""
+  };
 
-    this.state = {
-      content: ""
-    };
-  }
-
-  onSubmit(event) {
+  onSubmit = event => {
     event.preventDefault();
 
     this.props
@@ -22,16 +20,17 @@ class CommentForm extends Component {
         }
       })
       .then(() => this.setState({ content: "" }));
-  }
+  };
 
   render() {
     return (
-      <form onSubmit={this.onSubmit.bind(this)} className="comment-form">
+      <form onSubmit={this.onSubmit} className="comment-form">
         <input
           placeholder="Add a comment"
           value={this.state.content}
           onChange={event => this.setState({ content: event.target.value })}
         />
+        <LikeButton likes={this.props.likes} id={this.props.id} />
       </form>
     );
   }

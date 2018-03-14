@@ -14,9 +14,9 @@ export default {
       const post = await new Post(args).save();
       return post;
     },
-    clearAllPosts: async (parentValue, args, { Post }) => {
-      return await Post.collection.remove({});
-    },
+    // clearAllPosts: async (parentValue, args, { Post }) => {
+    //   return await Post.collection.remove({});
+    // },
     likePost: async (parentValue, args, { Post }) => {
       return await Post.findById(args).then(post => {
         ++post.likes;
