@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import gql from "graphql-tag";
 import { graphql } from "react-apollo";
+import { sanitize } from "dompurify";
 
 import LikeButton from "./LikeButton";
 
@@ -28,7 +29,9 @@ class CommentForm extends Component {
         <input
           placeholder="Add a comment"
           value={this.state.content}
-          onChange={event => this.setState({ content: event.target.value })}
+          onChange={event =>
+            this.setState({ content: sanitize(event.target.value) })
+          }
         />
         <LikeButton likes={this.props.likes} id={this.props.id} />
       </form>

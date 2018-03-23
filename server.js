@@ -43,7 +43,7 @@ app.use(
 );
 app.get("/graphiql", graphiqlExpress({ endpointURL: "/graphql" }));
 
-const PORT = process.env.PORT || 3030;
+const PORT = process.env.PORT || 3050;
 
 app.listen(PORT, () => {
   console.log(`Listening on ${PORT}`);

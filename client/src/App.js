@@ -9,7 +9,13 @@ import "./App.css";
 
 class App extends Component {
   state = {
-    class: ""
+    class: "",
+    isHovered: false
+  };
+
+  handleHover = event => {
+    this.setState({ isHovered: !this.state.isHovered });
+    this.state.isHovered ? event.target.pause() : event.target.play();
   };
 
   handleChange = event => {
@@ -28,7 +34,9 @@ class App extends Component {
           rootMargin="0% 0% -25%"
           onlyOnce
         >
-          <img
+          <video
+            onMouseOver={this.handleHover}
+            onMouseLeave={this.handleHover}
             onClick={() => this.props.history.push(`/posts/${_id}`)}
             className={this.state.class}
             data-src={imageUrl}

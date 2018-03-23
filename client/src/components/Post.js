@@ -17,10 +17,11 @@ class Post extends Component {
 
     return (
       <main className="post">
-        <img
+        <video
           className="post-image"
           src={postById.imageUrl}
           alt={postById.title}
+          autoPlay="true"
         />
         <Link to="/">Home</Link>
         <h1 className="post-title">{postById.title}</h1>

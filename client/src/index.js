@@ -10,10 +10,11 @@ import "font-awesome/css/font-awesome.min.css";
 
 import App from "./App";
 import Post from "./components/Post";
+import About from "./components/About";
 
 import registerServiceWorker from "./registerServiceWorker";
 
-const httpLink = new HttpLink({ uri: "http://localhost:3030/graphql" });
+const httpLink = new HttpLink({ uri: "http://localhost:3050/graphql" });
 
 const client = new ApolloClient({
   link: httpLink,
@@ -23,6 +24,7 @@ const client = new ApolloClient({
 const Root = () => (
   <Router>
     <Switch>
+      <Route path="/about" component={About} />
       <Route path="/posts/:id" component={Post} />
       <Route path="/" component={App} />
     </Switch>

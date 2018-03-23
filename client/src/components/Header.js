@@ -5,17 +5,17 @@ class Header extends Component {
   state = {
     urls: [
       {
-        alt: "My Github account",
+        alt: "Conrad's Github account",
         url: "https://github.com/conradknapp",
         iconClass: "fa fa-github"
       },
       {
-        alt: "My Codepen account",
+        alt: "Conrad's Codepen account",
         url: "https://codepen.io/conradknapp",
         iconClass: "fa fa-codepen"
       },
       {
-        alt: "My Dribbble account",
+        alt: "Conrad's Dribbble account",
         url: "https://dribbble.com/conradknapp",
         iconClass: "fa fa-dribbble"
       }
