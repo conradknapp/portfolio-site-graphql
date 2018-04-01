@@ -1,6 +1,16 @@
+/* Shared Components */
+
+.scale-loader {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 /* View */
 
-.view {
+.Container {
   margin: 2em 2em;
 }
 
@@ -8,7 +18,7 @@
 
 header {
   text-align: center;
-  font-size: 2em;
+  font-size: 2rem;
   text-transform: uppercase;
   letter-spacing: 0.2em;
   height: 70vh;
@@ -20,17 +30,17 @@ header {
 
 .fa-github {
   opacity: 0.8;
-  animation: fade-color1 5s ease-in-out infinite alternate;
+  animation: rotate-color1 5s ease-in-out infinite alternate;
 }
 
 .fa-codepen {
   opacity: 0.8;
-  animation: fade-color2 5s ease-in-out infinite alternate;
+  animation: rotate-color2 5s ease-in-out infinite alternate;
 }
 
 .fa-dribbble {
   opacity: 0.8;
-  animation: fade-color3 5s ease-in-out infinite alternate;
+  animation: rotate-color3 5s ease-in-out infinite alternate;
 }
 
 i[class^="fa"]:hover {
@@ -38,7 +48,7 @@ i[class^="fa"]:hover {
   opacity: 1;
 }
 
-@keyframes fade-color1 {
+@keyframes rotate-color1 {
   0% {
     color: #0de999;
   }
@@ -46,7 +56,8 @@ i[class^="fa"]:hover {
     color: #0049dd;
   }
 }
-@keyframes fade-color2 {
+
+@keyframes rotate-color2 {
   0% {
     color: #4db8d1;
   }
@@ -54,7 +65,8 @@ i[class^="fa"]:hover {
     color: #066e86;
   }
 }
-@keyframes fade-color3 {
+
+@keyframes rotate-color3 {
   0% {
     color: #066e86;
   }
@@ -63,14 +75,20 @@ i[class^="fa"]:hover {
   }
 }
 
-/* Image Container */
+/* App.js */
 
-.image-container {
+.Video__Container {
   display: grid;
   grid-gap: 1em;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   align-items: stretch;
   overflow: hidden;
+}
+
+video {
+  object-fit: cover;
+  width: 100%;
+  background: gray;
 }
 
 /* video:nth-of-type(2n + 1) {
@@ -86,10 +104,6 @@ i[class^="fa"]:hover {
   animation: 0.3s fade-in ease-in forwards;
 }
 
-video {
-  object-fit: cover;
-  width: 100%;
-}
 
 @keyframes fade-in {
   0% {
@@ -151,7 +165,7 @@ video {
   outline: none;
   color: greenyellow;
   border-bottom: 0.5px dotted rgb(206, 206, 207);
-  font-size: 2em;
+  font-size: 1.5rem;
   transition: all 0.3s ease-in-out;
   width: 25vw;
 }

@@ -35,12 +35,16 @@ const Post = mongoose.model("Post", {
 const app = express();
 
 app.use(cors());
-app.use("/uploads", express.static("uploads"));
+app.use((req, res, next) => {
+  res.set("Cache-Control", "public, max-age=4000, s-maxage=8000");
+  next();
+});
 app.use(
   "/graphql",
   bodyParser.json(),
   graphqlExpress({ schema, context: { Post } })
 );
+
 app.get("/graphiql", graphiqlExpress({ endpointURL: "/graphql" }));
 
 const PORT = process.env.PORT || 3060;

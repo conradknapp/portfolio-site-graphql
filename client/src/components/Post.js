@@ -6,12 +6,18 @@ import { Link } from "react-router-dom";
 import CommentForm from "./CommentForm";
 import CommentList from "./CommentList";
 
+import { ScaleLoader } from "react-spinners";
+
 class Post extends Component {
   render() {
     const { postById } = this.props.data;
 
     if (!postById) {
-      return <div>Loading</div>;
+      return (
+        <div className="scale-loader">
+          <ScaleLoader color={"teal"} />
+        </div>
+      );
     }
 
     return (

@@ -4,13 +4,12 @@ import { graphql } from "react-apollo";
 
 import Header from "./components/Header.js";
 import Observer from "@researchgate/react-intersection-observer";
+import { ScaleLoader } from "react-spinners";
 
 import "./App.css";
 
 class App extends Component {
-  state = {
-    isHovered: false
-  };
+  state = { isHovered: false };
 
   handleHover = event => {
     this.setState({ isHovered: !this.state.isHovered });
@@ -46,8 +45,9 @@ class App extends Component {
             onMouseLeave={this.handleHover}
             onClick={() => this.props.history.push(`/posts/${_id}`)}
             data-src={imageUrl}
-            src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+            src="data:image/gif;base64,__"
             alt={title}
+            preload="auto"
           />
         </Observer>
       );
@@ -56,12 +56,23 @@ class App extends Component {
 
   render() {
     if (this.props.data.loading) {
-      return <div>Loading</div>;
+      return (
+        <div className="scale-loader">
+          {/*prettier-ignore*/}
+          <ScaleLoader 
+            color={"teal"} 
+            loading={this.props.data.loading} 
+          />
+        </div>
+      );
     }
+
     return (
-      <main className="view">
+      <main className="Container">
         <Header />
-        <section className="image-container">{this.renderPosts()}</section>
+        {/*prettier-ignore*/}
+        <section className="Video__Container">      {this.renderPosts()}
+        </section>
       </main>
     );
   }
