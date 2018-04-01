@@ -9,18 +9,24 @@ import "./App.css";
 
 class App extends Component {
   state = {
-    class: "",
     isHovered: false
   };
 
   handleHover = event => {
     this.setState({ isHovered: !this.state.isHovered });
-    this.state.isHovered ? event.target.pause() : event.target.play();
+    if (this.state.isHovered) {
+      event.target.pause();
+    } else {
+      const playPromise = event.target.play();
+      if (playPromise) {
+        playPromise.then(() => {}).catch(err => console.warn(err));
+      }
+    }
   };
 
   handleChange = event => {
     if (event.isIntersecting) {
-      event.target.className = "fadeIn";
+      event.target.className = "fade-in";
       event.target.src = event.target.dataset.src;
     }
   };
@@ -35,10 +41,10 @@ class App extends Component {
           onlyOnce
         >
           <video
+            crossOrigin="anonymous"
             onMouseOver={this.handleHover}
             onMouseLeave={this.handleHover}
             onClick={() => this.props.history.push(`/posts/${_id}`)}
-            className={this.state.class}
             data-src={imageUrl}
             src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
             alt={title}
@@ -50,7 +56,7 @@ class App extends Component {
 
   render() {
     if (this.props.data.loading) {
-      return <div>loading...</div>;
+      return <div>Loading</div>;
     }
     return (
       <main className="view">

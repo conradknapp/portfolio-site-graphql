@@ -14,7 +14,7 @@ import About from "./components/About";
 
 import registerServiceWorker from "./registerServiceWorker";
 
-const httpLink = new HttpLink({ uri: "http://localhost:3050/graphql" });
+const httpLink = new HttpLink({ uri: "http://localhost:3060/graphql" });
 
 const client = new ApolloClient({
   link: httpLink,

@@ -9,23 +9,24 @@ import CommentList from "./CommentList";
 class Post extends Component {
   render() {
     const { postById } = this.props.data;
-    console.log(this.props.data);
 
     if (!postById) {
       return <div>Loading</div>;
     }
 
     return (
-      <main className="post">
+      <main className="Post">
         <video
-          className="post-image"
+          preload="auto"
+          className="Post__Video"
           src={postById.imageUrl}
           alt={postById.title}
           autoPlay="true"
+          crossOrigin="true"
         />
         <Link to="/">Home</Link>
-        <h1 className="post-title">{postById.title}</h1>
-        <p className="post-content">{postById.content}</p>
+        <h1 className="Post__Title">{postById.title}</h1>
+        <p className="Post__Content">{postById.content}</p>
         <CommentForm id={this.props.match.params.id} likes={postById.likes} />
         <CommentList comments={postById.comments} />
       </main>

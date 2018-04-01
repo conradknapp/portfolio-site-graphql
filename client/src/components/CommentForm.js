@@ -25,7 +25,7 @@ class CommentForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.onSubmit} className="comment-form">
+      <form onSubmit={this.onSubmit} className="Comment__Form">
         <input
           placeholder="Add a comment"
           value={this.state.content}
